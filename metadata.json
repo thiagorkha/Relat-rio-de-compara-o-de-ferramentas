@@ -1,0 +1,5 @@
+{
+  "name": "Calculadora de Usinagem",
+  "description": "Ferramenta para análise de custo-benefício entre duas opções de ferramentas de corte (insertos/fresas) considerando custo máquina e vida útil.",
+  "requestFramePermissions": []
+}
