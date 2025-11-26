@@ -38,7 +38,10 @@ interface ComparisonResult {
 }
 
 // --- SERVICE ---
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize API safely. In a browser env without build process, process.env might be missing.
+// We assume the environment injects it or it is handled by the platform.
+const apiKey = process.env.API_KEY || '';
+const ai = new GoogleGenAI({ apiKey });
 
 const analyzeComparison = async (
   toolA: ToolParams,
@@ -85,7 +88,7 @@ const analyzeComparison = async (
     return response.text || "Não foi possível gerar a análise no momento.";
   } catch (error) {
     console.error("Erro ao chamar Gemini:", error);
-    return "Houve um erro ao conectar com a IA para análise. Verifique sua chave de API.";
+    return "Houve um erro ao conectar com a IA para análise. Verifique se a chave de API está configurada.";
   }
 };
 
